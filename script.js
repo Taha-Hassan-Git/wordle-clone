@@ -5,7 +5,8 @@ const textbox = document.querySelector('.input')
 function handleKey(e){
     if (e.key === 'Enter'){return handleSubmit()}
     if (e.key === 'Backspace'){return handleBackspace()}
-    else {return handleLetter(e.key.toUpperCase())}
+    else if (e.code.startsWith('Key') ) {
+        return handleLetter(e.key.toUpperCase())}
 }
 
 function handleClick(e){
@@ -13,11 +14,10 @@ function handleClick(e){
     if (e.target.innerHTML === 'Enter') {return handleSubmit()}
     if (e.target.innerHTML === 'Backspace') {return handleBackspace()}
     else {return handleLetter(e.target.innerHTML)}
-    
 }
-function handleLetter(e){
+function handleLetter(letter){
     if (textbox.value.length >4) return
-    else {textbox.value += e;}
+    else {textbox.value += letter;}
 }
 
 function handleSubmit(){
