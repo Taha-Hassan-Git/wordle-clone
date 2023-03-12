@@ -10,8 +10,8 @@ function handleKeyBoard(e){
 
 function handleClick(e){
     const textbox = document.querySelector('.input')
-    if (e.target.innerHTML === 'Enter') {return handleSubmit()}
-    if (e.target.innerHTML === 'Backspace') {return handleBackspace()}
+    if (e.target.innerHTML === 'ENTER') {return handleSubmit()}
+    if (e.target) {return handleBackspace()}
     else {return handleLetter(e.target.innerHTML)}
 }
 function handleLetter(letter){
