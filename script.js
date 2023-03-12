@@ -9,22 +9,33 @@ function handleKeyBoard(e){
 }
 
 function handleClick(e){
-    const textbox = document.querySelector('.input')
+    console.log(e.target);
     if (e.target.innerHTML === 'ENTER') {return handleSubmit()}
-    if (e.target) {return handleBackspace()}
+    if (e.target.id === 'backspace') {return handleBackspace()}
     else {return handleLetter(e.target.innerHTML)}
 }
+let letterCount = 0
 function handleLetter(letter){
-    if (textbox.value.length >4) return
-    else {textbox.value += letter;}
+    if (letterCount <5) {
+        letterCount += 1;
+        const div = document.getElementById(`letter${letterCount}`);
+        div.innerHTML = letter;
+    }
+    
 }
 
 function handleSubmit(){
-    const textbox = document.querySelector('.input')
-    if (textbox.value.length >4) {textbox.value = '';}
+    const letters = document.querySelectorAll('.letter');
+    if (letterCount === 5) {
+        letters.forEach(letter => letter.innerHTML = '');
+        letterCount = 0;
+    }
     else (alert('Not enough letters'));
 }
 function handleBackspace(){
-    const textbox = document.querySelector('.input')
-    textbox.value = textbox.value.slice(0, -1)
+    if (letterCount > 0){
+    const div = document.getElementById(`letter${letterCount}`);
+    div.innerHTML = ''
+    letterCount -= 1;
+    }
 }

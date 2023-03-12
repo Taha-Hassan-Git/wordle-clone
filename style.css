@@ -94,10 +94,17 @@ header{
     -ms-border-radius: 10%;
     -o-border-radius: 10%;
 }
+.key:active{
+    background-color: gray;
+}
 .key__big {
     font-size: 0.8rem;
     min-width: 35px;
 }
 input{
     width: 100px;
+    align-self: center;
+}
+span{
+    pointer-events: none;
 }
